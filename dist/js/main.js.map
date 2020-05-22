@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/js/main.js"],"names":["PhoneValidator","selector","nonAmerican","errorMessage"],"mappings":"aAAA,IAAIA,gBACFC,SAAU,wBACVC,aAAa,EACbC,aAAc","sourcesContent":["new PhoneValidator({\n  selector: \"[data-validate-phone]\",\n  nonAmerican: true,\n  errorMessage: \"invalid phone number!\",\n});\n"]}
