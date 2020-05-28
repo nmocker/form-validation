@@ -16,12 +16,12 @@
         <form>
           <div class="field">
             <label for="full_name">Full Name</label>
-            <input type="text" name="full_name" />
+            <input type="text" name="full_name" data-validate-name="true" />
             <span class="error-message"></span>
           </div>
           <div class="field">
             <label for="email">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" data-validate-email="true" />
             <span class="error-message"></span>
           </div>
           <div class="field">
@@ -41,6 +41,8 @@
 
     <script src="dist/js/validator.js"></script>
     <script src="dist/js/phone-validator.js"></script>
+    <script src="dist/js/email-validator.js"></script>
+    <script src="dist/js/name-validator.js"></script>
     <script src="dist/js/main.js"></script>
   </body>
 </html>
