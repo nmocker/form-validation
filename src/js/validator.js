@@ -39,44 +39,34 @@ class Validator {
       elements[i].addEventListener("focus", () => {
         this.touched = true;
       });
-      // elements[i].addEventListener("blur", (evt) => this.validate(evt));
-      elements[i].addEventListener("keyup", (evt) => this.validate(evt));
+      elements[i].addEventListener("blur", (evt) => this.validate(evt));
+      // elements[i].addEventListener("keyup", (evt) => this.validate(evt));
     }
   }
 
-  let field = document.querySelectorAll("input");
-
   validate(event) {
     console.log("Validator.validate()");
-    
-
   }
 
   validateBefore(event) {
     console.log("Validator.validateBefore()");
-
   }
 
-  validateAfter(event) {
+  validateAfter = (event) => {
     console.log("Validator.validateAfter() isValid?", this.isValid);
     const $el = event.target;
-    
     if (!this.isValid) {
       $el.classList.add("invalid");
       $el.parentElement.querySelector(
         ".error-message"
       ).innerHTML = this.options.errorMessage;
-      field.style.backgroundColor = "red";
-    } else {  
+    } else {
       $el.classList.remove("invalid");
       $el.parentElement.querySelector(".error-message").innerHTML = "";
-     };
     }
+  };
 
-    showErrors = () => {
-      console.log("showing errors");
-      
-     }
-  }
-
-  
+  showErrors = () => {
+    console.log("showing errors");
+  };
+}

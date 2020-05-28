@@ -20,43 +20,42 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var PhoneValidator = /*#__PURE__*/function (_Validator) {
-  _inherits(PhoneValidator, _Validator);
+var NameValidator = /*#__PURE__*/function (_Validator) {
+  _inherits(NameValidator, _Validator);
 
-  var _super = _createSuper(PhoneValidator);
+  var _super = _createSuper(NameValidator);
 
-  function PhoneValidator(parameters) {
+  function NameValidator(parameters) {
     var _this;
 
-    _classCallCheck(this, PhoneValidator);
+    _classCallCheck(this, NameValidator);
 
     _this = _super.call(this, parameters);
 
     _defineProperty(_assertThisInitialized(_this), "validate", function (event) {
-      console.log("PhoneValidator.validate", event);
+      console.log("NameValidator.validate", event);
       var value = event.target.value;
 
       _this.validateBefore(event);
 
-      console.log("running validation for PhoneValidator", event);
+      console.log("running validation for NameValidator", event);
       console.log("value", value);
 
-      if (!value || /^\(?\d{3}\)?[\-\. ]?\d{3}[\-\. ]?\d{4}$/.test(value)) {
+      if (/\w+\s.+/.test(value)) {
         _this.isValid = true;
-        console.log("valid phone number!");
+        console.log("valid name!");
       } else {
         _this.isValid = false;
-        console.log("not a valid phone number");
+        console.log("not a valid name");
       }
 
       _this.validateAfter(event);
     });
 
-    console.log("PhoneValidator()", _this.options);
-    console.log("looking for non-american phones?", _this.options.nonAmerican);
+    console.log("test");
     return _this;
   }
 
-  return PhoneValidator;
+  return NameValidator;
 }(Validator);
-//# sourceMappingURL=phone-validator.js.map
+//# sourceMappingURL=name-validator.js.map

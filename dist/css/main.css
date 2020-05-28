@@ -252,4 +252,8 @@ body {
 	width: 5rem;
 }
 
+.invalid {
+	background-color: red;
+}
+
 /*# sourceMappingURL=main.css.map */

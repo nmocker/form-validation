@@ -8,18 +8,19 @@ class PhoneValidator extends Validator {
 
   validate = (event) => {
     console.log("PhoneValidator.validate", event);
-    super.validateBefore(event);
+    const value = event.target.value;
+
+    this.validateBefore(event);
     console.log("running validation for PhoneValidator", event);
 
-    const value = event.target.value;
     console.log("value", value);
-    if (/^\(?\d{3}\)?[\-\. ]?\d{3}[\-\. ]?\d{4}$/.test(value)) {
+    if (!value || /^\(?\d{3}\)?[\-\. ]?\d{3}[\-\. ]?\d{4}$/.test(value)) {
       this.isValid = true;
       console.log("valid phone number!");
     } else {
       this.isValid = false;
       console.log("not a valid phone number");
     }
-    super.validateAfter(event);
+    this.validateAfter(event);
   };
 }

@@ -20,6 +20,19 @@ var Validator = /*#__PURE__*/function () {
 
     _defineProperty(this, "options", {});
 
+    _defineProperty(this, "validateAfter", function (event) {
+      console.log("Validator.validateAfter() isValid?", _this.isValid);
+      var $el = event.target;
+
+      if (!_this.isValid) {
+        $el.classList.add("invalid");
+        $el.parentElement.querySelector(".error-message").innerHTML = _this.options.errorMessage;
+      } else {
+        $el.classList.remove("invalid");
+        $el.parentElement.querySelector(".error-message").innerHTML = "";
+      }
+    });
+
     _defineProperty(this, "showErrors", function () {
       console.log("showing errors");
     });
@@ -52,11 +65,10 @@ var Validator = /*#__PURE__*/function () {
     for (var i = 0; i < elements.length; i++) {
       elements[i].addEventListener("focus", function () {
         _this.touched = true;
-      }); // elements[i].addEventListener("blur", (evt) => this.validate(evt));
-
-      elements[i].addEventListener("keyup", function (evt) {
-        return _this.validate(evt);
       });
+      elements[i].addEventListener("blur", function (evt) {
+        return _this.validate(evt);
+      }); // elements[i].addEventListener("keyup", (evt) => this.validate(evt));
     }
   }
 
@@ -69,22 +81,6 @@ var Validator = /*#__PURE__*/function () {
     key: "validateBefore",
     value: function validateBefore(event) {
       console.log("Validator.validateBefore()");
-    }
-  }, {
-    key: "validateAfter",
-    value: function validateAfter(event) {
-      console.log("Validator.validateAfter() isValid?", this.isValid);
-      var $el = event.target;
-      var field = document.querySelectorAll("input");
-
-      if (!this.isValid) {
-        $el.classList.add("invalid");
-        $el.parentElement.querySelector(".error-message").innerHTML = this.options.errorMessage;
-        field.style.backgroundColor = "red";
-      } else {
-        $el.classList.remove("invalid");
-        $el.parentElement.querySelector(".error-message").innerHTML = "";
-      }
     }
   }]);
 

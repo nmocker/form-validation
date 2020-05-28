@@ -20,43 +20,42 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var PhoneValidator = /*#__PURE__*/function (_Validator) {
-  _inherits(PhoneValidator, _Validator);
+var EmailValidator = /*#__PURE__*/function (_Validator) {
+  _inherits(EmailValidator, _Validator);
 
-  var _super = _createSuper(PhoneValidator);
+  var _super = _createSuper(EmailValidator);
 
-  function PhoneValidator(parameters) {
+  function EmailValidator(parameters) {
     var _this;
 
-    _classCallCheck(this, PhoneValidator);
+    _classCallCheck(this, EmailValidator);
 
     _this = _super.call(this, parameters);
 
     _defineProperty(_assertThisInitialized(_this), "validate", function (event) {
-      console.log("PhoneValidator.validate", event);
+      console.log("EmailValidator.validate", event);
       var value = event.target.value;
 
       _this.validateBefore(event);
 
-      console.log("running validation for PhoneValidator", event);
+      console.log("running validation for EmailValidator", event);
       console.log("value", value);
 
-      if (!value || /^\(?\d{3}\)?[\-\. ]?\d{3}[\-\. ]?\d{4}$/.test(value)) {
+      if (/\w+@\w+\.\w+/.test(value)) {
         _this.isValid = true;
-        console.log("valid phone number!");
+        console.log("valid email!");
       } else {
         _this.isValid = false;
-        console.log("not a valid phone number");
+        console.log("not a valid email");
       }
 
       _this.validateAfter(event);
     });
 
-    console.log("PhoneValidator()", _this.options);
-    console.log("looking for non-american phones?", _this.options.nonAmerican);
+    console.log("EmailValidator()", _this.options);
     return _this;
   }
 
-  return PhoneValidator;
+  return EmailValidator;
 }(Validator);
-//# sourceMappingURL=phone-validator.js.map
+//# sourceMappingURL=email-validator.js.map
